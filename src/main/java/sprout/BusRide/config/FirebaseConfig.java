@@ -8,14 +8,16 @@ import org.springframework.context.annotation.Configuration;
 import javax.annotation.PostConstruct;
 import java.io.FileInputStream;
 import java.io.IOException;
+import java.io.InputStream;
 
 @Configuration
 public class FirebaseConfig {
 
     @PostConstruct
     public void init() throws IOException {
-        FileInputStream serviceAccount =
-                new FileInputStream("src/main/resources/firebaseKey.json");
+        ClassLoader classLoader = getClass().getClassLoader();
+        InputStream serviceAccount = classLoader.getResourceAsStream("firebaseKey.json");
+
         FirebaseOptions options = new FirebaseOptions.Builder()
                 .setCredentials(GoogleCredentials.fromStream(serviceAccount))
                 .setDatabaseUrl("https://busridebell-default-rtdb.firebaseio.com")
