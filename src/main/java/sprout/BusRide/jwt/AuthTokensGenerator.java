@@ -14,12 +14,12 @@ public class AuthTokensGenerator {
 
     private final JwtTokenProvider jwtTokenProvider;
 
-    public AuthTokens generate(Long memberId) {
+    public AuthTokens generate(String memberId) {
         long now = (new Date()).getTime();
         Date accessTokenExpiredAt = new Date(now + ACCESS_TOKEN_EXPIRE_TIME);
         Date refreshTokenExpiredAt = new Date(now + REFRESH_TOKEN_EXPIRE_TIME);
 
-        String subject = memberId.toString();
+        String subject = memberId;
         String accessToken = jwtTokenProvider.generate(subject, accessTokenExpiredAt);
         String refreshToken = jwtTokenProvider.generate(subject, refreshTokenExpiredAt);
 

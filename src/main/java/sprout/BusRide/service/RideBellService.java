@@ -22,6 +22,13 @@ public class RideBellService {
                 firestore.collection(COLLECTION_NAME).document(rideBell.getId()).set(rideBell);
         return apiFuture.get().getUpdateTime().toString();
     }
+//    public String insertRideBell(RideBell rideBell) throws Exception {
+//        Firestore firestore = FirestoreClient.getFirestore();
+//        CollectionReference collectionRef = firestore.collection(COLLECTION_NAME);
+//        ApiFuture<DocumentReference> apiFuture = collectionRef.add(rideBell);
+//        String generatedId = apiFuture.get().getId();
+//        return generatedId;
+//    }
 
     public List<RideBell> getAllRideBell() throws Exception {
         Firestore firestore = FirestoreClient.getFirestore();

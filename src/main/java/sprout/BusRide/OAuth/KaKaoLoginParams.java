@@ -1,9 +1,14 @@
 package sprout.BusRide.OAuth;
 
+import lombok.Getter;
+import lombok.NoArgsConstructor;
 import org.springframework.util.LinkedMultiValueMap;
 import org.springframework.util.MultiValueMap;
 import sprout.BusRide.domain.OAuthProvider;
 
+
+@Getter
+@NoArgsConstructor
 public class KaKaoLoginParams implements OAuthLoginParams {
     private String authorizationCode;
 
