@@ -1,6 +1,5 @@
 package sprout.BusRide.controller;
 
-import com.google.cloud.firestore.QueryDocumentSnapshot;
 import io.swagger.v3.oas.annotations.Operation;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -20,13 +19,13 @@ public class RideBellController {
 
     @Operation(summary = "승차벨 요청", description = "승차벨 요청하기")
     @PostMapping("/RideBell")
-    public String requestRideBell(@RequestBody RideBell rideBell) throws Exception {
-        return rideBellService.insertRideBell(rideBell);
+    public void requestRideBell(@RequestBody RideBell rideBell) {
+        rideBellService.saveRideBell(rideBell);
     }
 
     @Operation(summary = "승차벨 정보", description = "승차벨 정보 가져오기")
     @GetMapping("/RideBell")
-    public List<RideBell> AllRideBell() throws Exception {
-        return rideBellService.getAllRideBell();
+    public List<RideBell> AllRideBell() {
+        return rideBellService.findRideBells();
     }
 }

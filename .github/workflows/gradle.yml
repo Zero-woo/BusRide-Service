@@ -29,9 +29,9 @@ jobs:
         java-version: '11'
         distribution: 'temurin'
 
-    - name: FireBaseKey, application.yml Setting
-      run : echo "${{ secrets.FIREBASEKEY }}" >> ./src/main/resources/firebaseKey.json
-            echo "${{ secrets.APPLICATION}}" >> ./src/main/resources/application.yml
+    - name: application.yml Setting
+      run : echo "${{ secrets.APPLICATION}}" >> ./src/main/resources/application.yml
+
 
     - name: Build with Gradle
       uses: gradle/gradle-build-action@67421db6bd0bf253fb4bd25b31ebb98943c375e1
