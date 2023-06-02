@@ -4,12 +4,11 @@ import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.Parameter;
 import io.swagger.v3.oas.annotations.Parameters;
 import io.swagger.v3.oas.annotations.tags.Tag;
+import lombok.Data;
 import lombok.RequiredArgsConstructor;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import sprout.BusRide.domain.RideBell;
+import sprout.BusRide.dto.RideBellDto;
 import sprout.BusRide.service.RideBellService;
 
 import java.util.List;
@@ -27,8 +26,8 @@ public class RideBellController {
             @Parameter(name = "message", description = "메시지", example = "저는 다리가 불편해요")
     })
     @PostMapping("/RideBell")
-    public void requestRideBell(@RequestBody RideBell rideBell) {
-        rideBellService.saveRideBell(rideBell);
+    public void requestRideBell(@RequestHeader("accessToken") String accessToken, @RequestBody RideBellDto rideBellDto) {
+        rideBellService.saveRideBell(accessToken, rideBellDto);
     }
 
     @Operation(summary = "승차벨 정보", description = "승차벨 정보 가져오기")
@@ -36,4 +35,6 @@ public class RideBellController {
     public List<RideBell> AllRideBell() {
         return rideBellService.findRideBells();
     }
+
+
 }
