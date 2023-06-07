@@ -22,12 +22,15 @@ public class RideBellController {
 
     @Operation(summary = "승차벨 요청", description = "승차벨 요청하기")
     @Parameters({
-            @Parameter(name = "busStopId", description = "정류장 ID", example = "17945"),
+            @Parameter(name = "busNumber", description = "버스번호", example = "6515"),
+            @Parameter(name = "butStopName", description = "버스정류장 이름", example = "신도림역"),
+            @Parameter(name = "passengerType", description = "승객유형", example = "장애인"),
+            @Parameter(name = "seatType", description = "좌석유형", example = "장애인좌석"),
             @Parameter(name = "message", description = "메시지", example = "저는 다리가 불편해요")
     })
     @PostMapping("/RideBell")
-    public void requestRideBell(@RequestHeader("accessToken") String accessToken, @RequestBody RideBellDto rideBellDto) {
-        rideBellService.saveRideBell(accessToken, rideBellDto);
+    public void requestRideBell(@RequestBody RideBellDto rideBellDto) {
+        rideBellService.saveRideBell(rideBellDto);
     }
 
     @Operation(summary = "승차벨 정보", description = "승차벨 정보 가져오기")

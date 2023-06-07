@@ -15,16 +15,22 @@ public class RideBell {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private String name;
+    private String busNumber;
 
-    private String busStopId;
+    private String busStopName;
+
+    private String passengerType;
+
+    private String seatType;
 
     private String message;
 
     @Builder
-    public RideBell(String name, String busStopId, String message) {
-        this.name = name;
-        this.busStopId = busStopId;
+    public RideBell(String busNumber, String busStopName, String passengerType,String seatType, String message) {
+        this.busNumber = busNumber;
+        this.busStopName = busStopName;
+        this.passengerType = passengerType;
+        this.seatType = seatType;
         this.message = message;
     }
 

@@ -5,7 +5,14 @@ import lombok.Data;
 @Data
 public class RideBellDto {
 
-    private String busStopId;
+    private String busNumber;
+
+    private String busStopName;
+
+    private String passengerType;
+
+    private String seatType;
+
     private String message;
 
 }

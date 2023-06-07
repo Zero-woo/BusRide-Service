@@ -22,15 +22,17 @@ public class RideBellService {
 
 
 
-    public void saveRideBell(String accessToken, RideBellDto rideBellDto) {
-        Long memberId = authTokensGenerator.extractMemberId(accessToken);
-        String name = memberRepository.findById(memberId)
-                .map(Member::getNickname)
-                .orElse("익명");
+    public void saveRideBell(RideBellDto rideBellDto) {
+//        Long memberId = authTokensGenerator.extractMemberId(accessToken);
+//        String name = memberRepository.findById(memberId)
+//                .map(Member::getNickname)
+//                .orElse("익명");
 
         RideBell rideBell = RideBell.builder()
-                .name(name)
-                .busStopId(rideBellDto.getBusStopId())
+                .busNumber(rideBellDto.getBusNumber())
+                .busStopName(rideBellDto.getBusStopName())
+                .passengerType(rideBellDto.getPassengerType())
+                .seatType(rideBellDto.getSeatType())
                 .message(rideBellDto.getMessage()).build();
 
         rideBellRepository.save(rideBell);
