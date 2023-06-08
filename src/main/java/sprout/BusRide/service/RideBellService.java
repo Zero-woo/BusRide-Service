@@ -10,7 +10,6 @@ import sprout.BusRide.repository.MemberRepository;
 import sprout.BusRide.repository.RideBellRepository;
 
 import java.util.List;
-import java.util.Optional;
 
 @Service
 @RequiredArgsConstructor
@@ -32,7 +31,6 @@ public class RideBellService {
                 .busNumber(rideBellDto.getBusNumber())
                 .busStopName(rideBellDto.getBusStopName())
                 .passengerType(rideBellDto.getPassengerType())
-                .seatType(rideBellDto.getSeatType())
                 .message(rideBellDto.getMessage()).build();
 
         rideBellRepository.save(rideBell);
@@ -41,5 +39,10 @@ public class RideBellService {
     public List<RideBell> findRideBells() {
         return rideBellRepository.findAll();
     }
+
+    public List<RideBell> findRideBell(String busNumber) {
+        return rideBellRepository.findByBusNumber(busNumber);
+    }
+
 
 }

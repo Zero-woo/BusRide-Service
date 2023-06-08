@@ -11,8 +11,6 @@ public class RideBellDto {
 
     private String passengerType;
 
-    private String seatType;
-
     private String message;
 
 }

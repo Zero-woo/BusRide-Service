@@ -25,7 +25,6 @@ public class RideBellController {
             @Parameter(name = "busNumber", description = "버스번호", example = "6515"),
             @Parameter(name = "butStopName", description = "버스정류장 이름", example = "신도림역"),
             @Parameter(name = "passengerType", description = "승객유형", example = "장애인"),
-            @Parameter(name = "seatType", description = "좌석유형", example = "장애인좌석"),
             @Parameter(name = "message", description = "메시지", example = "저는 다리가 불편해요")
     })
     @PostMapping("/RideBell")
@@ -38,6 +37,16 @@ public class RideBellController {
     public List<RideBell> AllRideBell() {
         return rideBellService.findRideBells();
     }
+
+    @Operation(summary = "버스번호로 승차벨 확인")
+    @GetMapping("RideBell/{BusNumber}")
+    @Parameter(name = "BusNumber",description = "버스번호", example = "600")
+    public List<RideBell> RideBell(@PathVariable("BusNumber") String busNumber) {
+        return rideBellService.findRideBell(busNumber);
+    }
+
+
+
 
 
 }

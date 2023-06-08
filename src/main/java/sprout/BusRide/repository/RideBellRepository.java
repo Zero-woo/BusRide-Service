@@ -12,4 +12,7 @@ public interface RideBellRepository extends JpaRepository<RideBell, Long> {
     <S extends RideBell> S save(S entity);
 
     List<RideBell> findAll();
+
+    List<RideBell> findByBusNumber(String busNumber);
+
 }
