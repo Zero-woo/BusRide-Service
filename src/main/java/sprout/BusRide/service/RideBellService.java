@@ -2,7 +2,6 @@ package sprout.BusRide.service;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
-import sprout.BusRide.domain.Member;
 import sprout.BusRide.domain.RideBell;
 import sprout.BusRide.dto.RideBellDto;
 import sprout.BusRide.jwt.AuthTokensGenerator;
@@ -16,16 +15,12 @@ import java.util.List;
 public class RideBellService {
 
     private final RideBellRepository rideBellRepository;
-    private final MemberRepository memberRepository;
-    private final AuthTokensGenerator authTokensGenerator;
-
-
 
     public Long saveRideBell(RideBellDto rideBellDto) {
 
         RideBell rideBell = RideBell.builder()
                 .busNumber(rideBellDto.getBusNumber())
-                .busStopNumber(rideBellDto.getBusNumber())
+                .busStopNumber(rideBellDto.getBusStopNumber())
                 .passengerType(rideBellDto.getPassengerType())
                 .message(rideBellDto.getMessage()).build();
 
@@ -55,8 +50,6 @@ public class RideBellService {
     public void deleteAllRideBell() {
         rideBellRepository.deleteAll();
     }
-
-
 
 
 }
