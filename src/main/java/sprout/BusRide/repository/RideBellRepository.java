@@ -15,4 +15,8 @@ public interface RideBellRepository extends JpaRepository<RideBell, Long> {
 
     List<RideBell> findByBusNumber(String busNumber);
 
+    List<RideBell> findByBusStopNumber(String busStopNumber);
+
+    void deleteById(Long id);
+
 }

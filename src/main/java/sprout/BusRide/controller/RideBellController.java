@@ -41,8 +41,23 @@ public class RideBellController {
     @Operation(summary = "버스번호로 승차벨 확인")
     @GetMapping("RideBell/{BusNumber}")
     @Parameter(name = "BusNumber",description = "버스번호", example = "600")
-    public List<RideBell> RideBell(@PathVariable("BusNumber") String busNumber) {
-        return rideBellService.findRideBell(busNumber);
+    public List<RideBell> RideBellByBus(@PathVariable("BusNumber") String busNumber) {
+        return rideBellService.findRideBellByBus(busNumber);
+    }
+
+    @Operation(summary = "버스정류장 번호로 승차벨 확인")
+    @GetMapping("RideBellByStop/{BusStopNumber}")
+    @Parameter(name = "BusStopNumber",description = "버스정류장번호", example = "116000007")
+    public List<RideBell> RideBellByBusStop(@PathVariable("BusStopNumber") String busStopNumber) {
+        return rideBellService.findRideBellByBusStop(busStopNumber);
+    }
+
+
+    @Operation(summary = "승차벨 삭제하기", description = "Id로 승차벨 삭제하기")
+    @Parameter(name = "Id", description = "고유 id")
+    @DeleteMapping("RideBell/{Id}")
+    public void DeleteRideBell(@PathVariable("Id") Long id) {
+        rideBellService.deleteById(id);
     }
 
 

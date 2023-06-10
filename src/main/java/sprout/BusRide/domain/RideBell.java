@@ -17,16 +17,16 @@ public class RideBell {
 
     private String busNumber;
 
-    private String busStopName;
+    private String busStopNumber;
 
     private String passengerType;
 
     private String message;
 
     @Builder
-    public RideBell(String busNumber, String busStopName, String passengerType,String message) {
+    public RideBell(String busNumber, String busStopNumber, String passengerType,String message) {
         this.busNumber = busNumber;
-        this.busStopName = busStopName;
+        this.busStopNumber = busStopNumber;
         this.passengerType = passengerType;
         this.message = message;
     }

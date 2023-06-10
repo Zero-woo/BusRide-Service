@@ -7,7 +7,7 @@ public class RideBellDto {
 
     private String busNumber;
 
-    private String busStopName;
+    private String busStopNumber;
 
     private String passengerType;
 

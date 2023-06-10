@@ -29,7 +29,7 @@ public class RideBellService {
 
         RideBell rideBell = RideBell.builder()
                 .busNumber(rideBellDto.getBusNumber())
-                .busStopName(rideBellDto.getBusStopName())
+                .busStopNumber(rideBellDto.getBusNumber())
                 .passengerType(rideBellDto.getPassengerType())
                 .message(rideBellDto.getMessage()).build();
 
@@ -40,9 +40,19 @@ public class RideBellService {
         return rideBellRepository.findAll();
     }
 
-    public List<RideBell> findRideBell(String busNumber) {
+    public List<RideBell> findRideBellByBus(String busNumber) {
         return rideBellRepository.findByBusNumber(busNumber);
     }
+
+    public List<RideBell> findRideBellByBusStop(String busStopNumber) {
+        return rideBellRepository.findByBusStopNumber(busStopNumber);
+    }
+
+    public void deleteById(Long id) {
+        rideBellRepository.deleteById(id);
+    }
+
+
 
 
 }
