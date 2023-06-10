@@ -21,11 +21,7 @@ public class RideBellService {
 
 
 
-    public void saveRideBell(RideBellDto rideBellDto) {
-//        Long memberId = authTokensGenerator.extractMemberId(accessToken);
-//        String name = memberRepository.findById(memberId)
-//                .map(Member::getNickname)
-//                .orElse("익명");
+    public Long saveRideBell(RideBellDto rideBellDto) {
 
         RideBell rideBell = RideBell.builder()
                 .busNumber(rideBellDto.getBusNumber())
@@ -33,7 +29,7 @@ public class RideBellService {
                 .passengerType(rideBellDto.getPassengerType())
                 .message(rideBellDto.getMessage()).build();
 
-        rideBellRepository.save(rideBell);
+        return rideBellRepository.save(rideBell).getId();
     }
 
     public List<RideBell> findRideBells() {
@@ -50,6 +46,14 @@ public class RideBellService {
 
     public void deleteById(Long id) {
         rideBellRepository.deleteById(id);
+    }
+
+    public void deleteAllByBusNumber(String busNumber) {
+        rideBellRepository.deleteAllByBusNumber(busNumber);
+    }
+
+    public void deleteAllRideBell() {
+        rideBellRepository.deleteAll();
     }
 
 

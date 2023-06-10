@@ -28,8 +28,8 @@ public class RideBellController {
             @Parameter(name = "message", description = "메시지", example = "저는 다리가 불편해요")
     })
     @PostMapping("/RideBell")
-    public void requestRideBell(@RequestBody RideBellDto rideBellDto) {
-        rideBellService.saveRideBell(rideBellDto);
+    public Long requestRideBell(@RequestBody RideBellDto rideBellDto) {
+        return rideBellService.saveRideBell(rideBellDto);
     }
 
     @Operation(summary = "승차벨 정보", description = "승차벨 정보 가져오기")
@@ -45,21 +45,31 @@ public class RideBellController {
         return rideBellService.findRideBellByBus(busNumber);
     }
 
-    @Operation(summary = "버스정류장 번호로 승차벨 확인")
+    @Operation(summary = "버스정류장 번호로 승차벨 확인", description = "버스정류장 번호로 승차벨 확인")
     @GetMapping("RideBellByStop/{BusStopNumber}")
     @Parameter(name = "BusStopNumber",description = "버스정류장번호", example = "116000007")
     public List<RideBell> RideBellByBusStop(@PathVariable("BusStopNumber") String busStopNumber) {
         return rideBellService.findRideBellByBusStop(busStopNumber);
     }
 
-
-    @Operation(summary = "승차벨 삭제하기", description = "Id로 승차벨 삭제하기")
+    @Operation(summary = "Id로 승차벨 삭제하기", description = "Id로 승차벨 삭제하기")
     @Parameter(name = "Id", description = "고유 id")
     @DeleteMapping("RideBell/{Id}")
     public void DeleteRideBell(@PathVariable("Id") Long id) {
         rideBellService.deleteById(id);
     }
 
+    @Operation(summary = "승차벨 전체삭제", description = "승차벨 전체 삭제하기")
+    @DeleteMapping("RideBell")
+    public void DeleteAllRideBell() {
+        rideBellService.deleteAllRideBell();
+    }
+
+    @Operation(summary = "버스번호로 승차벨 삭제", description = "버스번호로 승차벨 삭제하기")
+    @DeleteMapping("RideBell/{BusNumber}")
+    public void DeleteAllRideBellByBusNumber(@PathVariable("BusNumber") String busNumber) {
+        rideBellService.deleteAllByBusNumber(busNumber);
+    }
 
 
 

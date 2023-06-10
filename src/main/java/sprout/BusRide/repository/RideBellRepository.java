@@ -19,4 +19,7 @@ public interface RideBellRepository extends JpaRepository<RideBell, Long> {
 
     void deleteById(Long id);
 
+    void deleteAllByBusNumber(String busNumber);
+
+    void deleteAll();
 }
